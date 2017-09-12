@@ -24,7 +24,8 @@ import TOKENS from '../bpk-tokens/tokens/base.common';
 import { withButtonAlignment, withLargeButtonAlignment, withRtlSupport } from '../bpk-component-icon';
 import SmallLongArrowRightIcon from '../bpk-component-icon/sm/long-arrow-right';
 import LargeLongArrowRightIcon from '../bpk-component-icon/lg/long-arrow-right';
-import BpkButton from './index';
+import BpkButton, { BpkThemeableButton } from './index';
+import ThemeSwitcher from './ThemeSwitcher';
 
 const AlignedSmallLongArrowRightIcon = withButtonAlignment(withRtlSupport(SmallLongArrowRightIcon));
 const AlignedLargeLongArrowRightIcon = withLargeButtonAlignment(withRtlSupport(LargeLongArrowRightIcon));
@@ -39,6 +40,16 @@ storiesOf('bpk-component-button', module)
       &nbsp;<BpkButton large selected onClick={action('large primary selected clicked')}>Selected</BpkButton>
       &nbsp;<BpkButton large disabled onClick={action('THIS SHOULD NOT HAPPEN')}>Disabled</BpkButton>
     </div>
+  ))
+  .add('Themeable Primary', () => (
+    <ThemeSwitcher>
+      &nbsp;<BpkThemeableButton onClick={action('primary clicked')}>Button</BpkThemeableButton>
+      &nbsp;<BpkThemeableButton selected onClick={action('primary selected clicked')}>Selected</BpkThemeableButton>
+      &nbsp;<BpkThemeableButton disabled onClick={action('THIS SHOULD NOT HAPPEN')}>Disabled</BpkThemeableButton>
+      &nbsp;<BpkThemeableButton large onClick={action('large primary clicked')}>Button</BpkThemeableButton>
+      &nbsp;<BpkThemeableButton large selected onClick={action('large primary selected clicked')}>Selected</BpkThemeableButton>
+      &nbsp;<BpkThemeableButton large disabled onClick={action('THIS SHOULD NOT HAPPEN')}>Disabled</BpkThemeableButton>
+    </ThemeSwitcher>
   ))
   .add('Secondary', () => (
     <div>
@@ -56,6 +67,23 @@ storiesOf('bpk-component-button', module)
       </BpkButton>
       &nbsp;<BpkButton secondary large disabled onClick={action('THIS SHOULD NOT HAPPEN')}>Disabled</BpkButton>
     </div>
+  ))
+  .add('Themeable Secondary', () => (
+    <ThemeSwitcher>
+      &nbsp;<BpkThemeableButton secondary onClick={action('secondary clicked')}>Button</BpkThemeableButton>
+      &nbsp;<BpkThemeableButton secondary selected onClick={action('secondary selected clicked')}>Selected</BpkThemeableButton>
+      &nbsp;<BpkThemeableButton secondary disabled onClick={action('THIS SHOULD NOT HAPPEN')}>Disabled</BpkThemeableButton>
+      &nbsp;<BpkThemeableButton secondary large onClick={action('large secondary clicked')}>Button</BpkThemeableButton>
+      &nbsp;<BpkThemeableButton
+        secondary
+        large
+        selected
+        onClick={action('large secondary selected clicked')}
+      >
+        Selected
+      </BpkThemeableButton>
+      &nbsp;<BpkThemeableButton secondary large disabled onClick={action('THIS SHOULD NOT HAPPEN')}>Disabled</BpkThemeableButton>
+    </ThemeSwitcher>
   ))
   .add('Destructive', () => (
     <div>

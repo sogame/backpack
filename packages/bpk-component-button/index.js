@@ -17,5 +17,7 @@
  */
 
 import BpkButton from './src/BpkButton';
+import BpkThemeableButton from './src/BpkThemeableButton';
 
+export { BpkThemeableButton };
 export default BpkButton;

@@ -93,6 +93,14 @@ storiesOf('bpk-component-button', module)
       &nbsp;<BpkButton destructive large disabled onClick={action('THIS SHOULD NOT HAPPEN')}>Disabled</BpkButton>
     </div>
   ))
+  .add('Themeable Destructive', () => (
+    <ThemeSwitcher>
+      &nbsp;<BpkThemeableButton destructive onClick={action('destructive clicked')}>Button</BpkThemeableButton>
+      &nbsp;<BpkThemeableButton destructive disabled onClick={action('THIS SHOULD NOT HAPPEN')}>Disabled</BpkThemeableButton>
+      &nbsp;<BpkThemeableButton destructive large onClick={action('large destructive clicked')}>Button</BpkThemeableButton>
+      &nbsp;<BpkThemeableButton destructive large disabled onClick={action('THIS SHOULD NOT HAPPEN')}>Disabled</BpkThemeableButton>
+    </ThemeSwitcher>
+  ))
   .add('Link button', () => (
     <div>
       &nbsp;<BpkButton link onClick={action('link button clicked')}>Button</BpkButton>
@@ -112,6 +120,16 @@ storiesOf('bpk-component-button', module)
       &nbsp;<BpkButton featured large selected onClick={action('featured button selected clicked')}>Selected</BpkButton>
       &nbsp;<BpkButton featured large disabled onClick={action('THIS SHOULD NOT HAPPEN')}>Disabled</BpkButton>
     </div>
+  ))
+  .add('Themeable Featured', () => (
+    <ThemeSwitcher>
+      &nbsp;<BpkThemeableButton featured onClick={action('featured button clicked')}>Button</BpkThemeableButton>
+      &nbsp;<BpkThemeableButton featured selected onClick={action('featured button selected clicked')}>Selected</BpkThemeableButton>
+      &nbsp;<BpkThemeableButton featured disabled onClick={action('THIS SHOULD NOT HAPPEN')}>Disabled</BpkThemeableButton>
+      &nbsp;<BpkThemeableButton featured large onClick={action('featured button clicked')}>Button</BpkThemeableButton>
+      &nbsp;<BpkThemeableButton featured large selected onClick={action('featured button selected clicked')}>Selected</BpkThemeableButton>
+      &nbsp;<BpkThemeableButton featured large disabled onClick={action('THIS SHOULD NOT HAPPEN')}>Disabled</BpkThemeableButton>
+    </ThemeSwitcher>
   ))
   .add('Icon-only button', () => (
     <div>

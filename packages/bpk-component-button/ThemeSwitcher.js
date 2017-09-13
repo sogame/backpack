@@ -18,7 +18,7 @@
 
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { ThemeProvider } from 'glamorous';
+import { ThemeProvider } from 'theming';
 
 import BpkSelect from './../bpk-component-select';
 

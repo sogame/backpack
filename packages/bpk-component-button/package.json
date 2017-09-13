@@ -15,8 +15,9 @@
   "dependencies": {
     "bpk-mixins": "^16.5.2",
     "bpk-tokens": "^26.0.0",
-    "glamor": "^2.20.40",
-    "glamorous": "^4.8.0",
-    "prop-types": "^15.5.8"
+    "emotion": "^7.2.2",
+    "prop-types": "^15.5.8",
+    "react-emotion": "^7.2.2",
+    "theming": "^1.1.0"
   }
 }

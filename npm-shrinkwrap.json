@@ -837,6 +837,50 @@
         }
       }
     },
+    "babel-plugin-emotion": {
+      "version": "7.2.2",
+      "from": "babel-plugin-emotion@latest",
+      "resolved": "https://registry.npmjs.org/babel-plugin-emotion/-/babel-plugin-emotion-7.2.2.tgz",
+      "dev": true,
+      "dependencies": {
+        "ansi-styles": {
+          "version": "3.2.0",
+          "from": "ansi-styles@>=3.1.0 <4.0.0",
+          "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-3.2.0.tgz",
+          "dev": true
+        },
+        "chalk": {
+          "version": "2.1.0",
+          "from": "chalk@>=2.1.0 <3.0.0",
+          "resolved": "https://registry.npmjs.org/chalk/-/chalk-2.1.0.tgz",
+          "dev": true
+        },
+        "has-flag": {
+          "version": "2.0.0",
+          "from": "has-flag@>=2.0.0 <3.0.0",
+          "resolved": "https://registry.npmjs.org/has-flag/-/has-flag-2.0.0.tgz",
+          "dev": true
+        },
+        "postcss": {
+          "version": "6.0.11",
+          "from": "postcss@>=6.0.9 <7.0.0",
+          "resolved": "https://registry.npmjs.org/postcss/-/postcss-6.0.11.tgz",
+          "dev": true
+        },
+        "source-map": {
+          "version": "0.5.7",
+          "from": "source-map@>=0.5.7 <0.6.0",
+          "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz",
+          "dev": true
+        },
+        "supports-color": {
+          "version": "4.4.0",
+          "from": "supports-color@>=4.4.0 <5.0.0",
+          "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-4.4.0.tgz",
+          "dev": true
+        }
+      }
+    },
     "babel-plugin-istanbul": {
       "version": "4.1.4",
       "from": "babel-plugin-istanbul@>=4.0.0 <5.0.0",
@@ -2068,6 +2112,12 @@
       "version": "2.1.1",
       "from": "camelcase@>=2.0.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/camelcase/-/camelcase-2.1.1.tgz",
+      "dev": true
+    },
+    "camelcase-css": {
+      "version": "1.0.1",
+      "from": "camelcase-css@>=1.0.1 <2.0.0",
+      "resolved": "https://registry.npmjs.org/camelcase-css/-/camelcase-css-1.0.1.tgz",
       "dev": true
     },
     "camelcase-keys": {
@@ -3393,6 +3443,12 @@
       "version": "2.1.0",
       "from": "emojis-list@>=2.0.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/emojis-list/-/emojis-list-2.1.0.tgz",
+      "dev": true
+    },
+    "emotion-utils": {
+      "version": "7.2.2",
+      "from": "emotion-utils@>=7.2.2 <8.0.0",
+      "resolved": "https://registry.npmjs.org/emotion-utils/-/emotion-utils-7.2.2.tgz",
       "dev": true
     },
     "encodeurl": {
@@ -9088,6 +9144,50 @@
         }
       }
     },
+    "postcss-js": {
+      "version": "1.0.1",
+      "from": "postcss-js@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/postcss-js/-/postcss-js-1.0.1.tgz",
+      "dev": true,
+      "dependencies": {
+        "ansi-styles": {
+          "version": "3.2.0",
+          "from": "ansi-styles@^3.1.0",
+          "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-3.2.0.tgz",
+          "dev": true
+        },
+        "chalk": {
+          "version": "2.1.0",
+          "from": "chalk@^2.1.0",
+          "resolved": "https://registry.npmjs.org/chalk/-/chalk-2.1.0.tgz",
+          "dev": true
+        },
+        "has-flag": {
+          "version": "2.0.0",
+          "from": "has-flag@^2.0.0",
+          "resolved": "https://registry.npmjs.org/has-flag/-/has-flag-2.0.0.tgz",
+          "dev": true
+        },
+        "postcss": {
+          "version": "6.0.11",
+          "from": "postcss@^6.0.11",
+          "resolved": "https://registry.npmjs.org/postcss/-/postcss-6.0.11.tgz",
+          "dev": true
+        },
+        "source-map": {
+          "version": "0.5.7",
+          "from": "source-map@^0.5.7",
+          "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz",
+          "dev": true
+        },
+        "supports-color": {
+          "version": "4.4.0",
+          "from": "supports-color@^4.4.0",
+          "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-4.4.0.tgz",
+          "dev": true
+        }
+      }
+    },
     "postcss-less": {
       "version": "0.14.0",
       "from": "postcss-less@>=0.14.0 <0.15.0",
@@ -9358,6 +9458,50 @@
           "version": "4.0.0",
           "from": "supports-color@^4.0.0",
           "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-4.0.0.tgz",
+          "dev": true
+        }
+      }
+    },
+    "postcss-nested": {
+      "version": "2.1.2",
+      "from": "postcss-nested@>=2.1.1 <3.0.0",
+      "resolved": "https://registry.npmjs.org/postcss-nested/-/postcss-nested-2.1.2.tgz",
+      "dev": true,
+      "dependencies": {
+        "ansi-styles": {
+          "version": "3.2.0",
+          "from": "ansi-styles@^3.1.0",
+          "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-3.2.0.tgz",
+          "dev": true
+        },
+        "chalk": {
+          "version": "2.1.0",
+          "from": "chalk@^2.1.0",
+          "resolved": "https://registry.npmjs.org/chalk/-/chalk-2.1.0.tgz",
+          "dev": true
+        },
+        "has-flag": {
+          "version": "2.0.0",
+          "from": "has-flag@^2.0.0",
+          "resolved": "https://registry.npmjs.org/has-flag/-/has-flag-2.0.0.tgz",
+          "dev": true
+        },
+        "postcss": {
+          "version": "6.0.11",
+          "from": "postcss@^6.0.9",
+          "resolved": "https://registry.npmjs.org/postcss/-/postcss-6.0.11.tgz",
+          "dev": true
+        },
+        "source-map": {
+          "version": "0.5.7",
+          "from": "source-map@^0.5.7",
+          "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz",
+          "dev": true
+        },
+        "supports-color": {
+          "version": "4.4.0",
+          "from": "supports-color@^4.4.0",
+          "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-4.4.0.tgz",
           "dev": true
         }
       }
@@ -12337,6 +12481,20 @@
       "from": "to-fast-properties@>=1.0.1 <2.0.0",
       "resolved": "https://registry.npmjs.org/to-fast-properties/-/to-fast-properties-1.0.2.tgz",
       "dev": true
+    },
+    "touch": {
+      "version": "1.0.0",
+      "from": "touch@>=1.0.0 <2.0.0",
+      "resolved": "https://repository.prod.aws.skyscnr.com/artifactory/api/npm/npm-virtual/touch/-/touch-1.0.0.tgz",
+      "dev": true,
+      "dependencies": {
+        "nopt": {
+          "version": "1.0.10",
+          "from": "nopt@>=1.0.10 <1.1.0",
+          "resolved": "https://repository.prod.aws.skyscnr.com/artifactory/api/npm/npm-virtual/nopt/-/nopt-1.0.10.tgz",
+          "dev": true
+        }
+      }
     },
     "tough-cookie": {
       "version": "2.3.2",

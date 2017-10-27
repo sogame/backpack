@@ -43,10 +43,11 @@ class AnimateHeightContainer extends Component {
 
 ## Props
 
-| Property    | PropType         | Required | Default Value |
-| ----------- | ---------------- | -------- | ------------- |
-| children    | node             | true     | -             |
-| duration    | number           | true     | -             |
-| height      | string or number | true     | -             |
-| easing      | string           | false    | 'ease'        |
-| style       | object           | false    | {}            |
+| Property                 | PropType         | Required | Default Value |
+| -----------              | ---------------- | -------- | ------------- |
+| children                 | node             | true     | -             |
+| duration                 | number           | true     | -             |
+| height                   | string or number | true     | -             |
+| easing                   | string           | false    | 'ease'        |
+| onAnimationComplete      | function         | false    | null          |
+| style                    | object           | false    | {}            |

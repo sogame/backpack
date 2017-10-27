@@ -118,6 +118,9 @@ class AnimateHeight extends Component {
   }
 
   onTransitionEnd() {
+    if (this.props.onAnimationComplete !== null) {
+      this.props.onAnimationComplete();
+    }
     if (this.contentElement && this.props.height === 0) {
       this.contentElement.style.display = 'none';
     }
@@ -128,6 +131,7 @@ class AnimateHeight extends Component {
       children,
       duration,
       easing,
+      onAnimationComplete,
       style,
       ...rest
     } = this.props;
@@ -174,12 +178,14 @@ AnimateHeight.propTypes = {
   ]).isRequired,
   easing: PropTypes.string,
   transitionOverflow: PropTypes.string,
+  onAnimationComplete: PropTypes.func,
   style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
 
 AnimateHeight.defaultProps = {
   easing: 'ease',
   transitionOverflow: 'hidden',
+  onAnimationComplete: null,
   style: {},
 };
 

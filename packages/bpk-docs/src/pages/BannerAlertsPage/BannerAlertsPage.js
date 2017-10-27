@@ -16,8 +16,11 @@
  * limitations under the License.
  */
 
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import BpkButton from 'bpk-component-button';
 import BpkBannerAlert, { ALERT_TYPES } from 'bpk-component-banner-alert';
+import { spacingLg } from 'bpk-tokens/tokens/base.es6';
 
 import bannerAlertReadme from 'bpk-component-banner-alert/readme.md';
 
@@ -32,6 +35,62 @@ sapien, et dapibus mi aliquet non. Pellentesque auctor sagittis lectus vitae rho
 ante in, vestibulum nulla.`;
 const richMessage = <span style={{ fontWeight: 700 }}>Successful alert with custom rendered message</span>;
 
+const topBannerAlertStyle = {};
+const bannerAlertStyle = { marginTop: spacingLg };
+
+class BpkBannerAlertFadeDemo extends Component {
+  constructor() {
+    super();
+
+    this.addBannerAlert = this.addBannerAlert.bind(this);
+
+    this.state = {
+      bannerAlertCount: 0,
+    };
+  }
+
+  addBannerAlert() {
+    this.setState({
+      bannerAlertCount: this.state.bannerAlertCount + 1,
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <BpkButton onClick={this.addBannerAlert} >
+            Add banner alert!
+        </BpkButton>
+        <div>
+          {[...Array(this.state.bannerAlertCount)].map((e, i) => (
+            <BpkBannerAlert
+              key={i.toString()}
+              style={this.props.style}
+              message={this.props.message}
+              type={this.props.type}
+              fadeIn
+              dismissable
+              dismissButtonLabel="Dismiss"
+            />
+        ))}
+        </div>
+      </div>
+    );
+  }
+}
+
+BpkBannerAlertFadeDemo.propTypes = {
+  style: PropTypes.style,
+  message: PropTypes.string,
+  type: PropTypes.string,
+};
+
+BpkBannerAlertFadeDemo.defaultProps = {
+  style: null,
+  message: null,
+  type: null,
+};
+
 const components = [
   {
     id: 'default',
@@ -42,18 +101,31 @@ const components = [
       </Paragraph>,
     ],
     examples: [
-      <BpkBannerAlert message="Neutral alert." type={ALERT_TYPES.NEUTRAL} />,
-      <br />,
-      <BpkBannerAlert message="Successful alert." type={ALERT_TYPES.SUCCESS} />,
-      <br />,
       <BpkBannerAlert
+        style={topBannerAlertStyle}
+        message="Neutral alert."
+        type={ALERT_TYPES.NEUTRAL}
+      />,
+      <BpkBannerAlert
+        style={bannerAlertStyle}
+        message="Successful alert."
+        type={ALERT_TYPES.SUCCESS}
+      />,
+      <BpkBannerAlert
+        style={bannerAlertStyle}
         message={richMessage}
         type={ALERT_TYPES.SUCCESS}
       />,
-      <br />,
-      <BpkBannerAlert message="Warn alert." type={ALERT_TYPES.WARN} />,
-      <br />,
-      <BpkBannerAlert message="Error alert." type={ALERT_TYPES.ERROR} />,
+      <BpkBannerAlert
+        style={bannerAlertStyle}
+        message="Warn alert."
+        type={ALERT_TYPES.WARN}
+      />,
+      <BpkBannerAlert
+        style={bannerAlertStyle}
+        message="Error alert."
+        type={ALERT_TYPES.ERROR}
+      />,
     ],
   },
   {
@@ -67,32 +139,93 @@ const components = [
     ],
     examples: [
       <BpkBannerAlert
+        style={topBannerAlertStyle}
         message="Neutral alert with more information."
         type={ALERT_TYPES.NEUTRAL}
         toggleButtonLabel="See more"
       >
         {longMessage}
       </BpkBannerAlert>,
-      <br />,
       <BpkBannerAlert
+        style={bannerAlertStyle}
         message="Successful alert with more information."
         type={ALERT_TYPES.SUCCESS}
         toggleButtonLabel="See more"
       >
         {longMessage}
       </BpkBannerAlert>,
-      <br />,
-      <BpkBannerAlert message="Warn alert with more information." type={ALERT_TYPES.WARN} toggleButtonLabel="See more">
+      <BpkBannerAlert
+        style={bannerAlertStyle}
+        message="Warn alert with more information."
+        type={ALERT_TYPES.WARN}
+        toggleButtonLabel="See more"
+      >
         {longMessage}
       </BpkBannerAlert>,
-      <br />,
       <BpkBannerAlert
+        style={bannerAlertStyle}
         message="Error alert with more information."
         type={ALERT_TYPES.ERROR}
         toggleButtonLabel="See more"
       >
         {longMessage}
       </BpkBannerAlert>,
+    ],
+  },
+  {
+    id: 'dismissable',
+    title: 'Dismissable',
+    blurb: [
+      <Paragraph>
+        Banner alerts can be configured to include a close icon so that the user can dismiss them.
+      </Paragraph>,
+    ],
+    examples: [
+      <BpkBannerAlert
+        style={topBannerAlertStyle}
+        message="Neutral alert with dismiss option."
+        type={ALERT_TYPES.NEUTRAL}
+        dismissable
+        dismissButtonLabel="Dismiss"
+      />,
+      <BpkBannerAlert
+        style={bannerAlertStyle}
+        message="Successful alert with dismiss option."
+        type={ALERT_TYPES.SUCCESS}
+        dismissable
+        dismissButtonLabel="Dismiss"
+      />,
+      <BpkBannerAlert
+        style={bannerAlertStyle}
+        message="Warn alert with dismiss option."
+        type={ALERT_TYPES.WARN}
+        dismissable
+        dismissButtonLabel="Dismiss"
+      />,
+      <BpkBannerAlert
+        style={bannerAlertStyle}
+        message="Error alert with dismiss option."
+        type={ALERT_TYPES.ERROR}
+        dismissable
+        dismissButtonLabel="Dismiss"
+      />,
+    ],
+  },
+  {
+    id: 'fadeIn',
+    title: 'Fade In',
+    blurb: [
+      <Paragraph>
+        Banner alerts can be configured to animate in (fade) which is
+        useful for when they need to be added to an existing screen.
+      </Paragraph>,
+    ],
+    examples: [
+      <BpkBannerAlertFadeDemo
+        style={bannerAlertStyle}
+        message="Successful alert which fades in."
+        type={ALERT_TYPES.SUCCESS}
+      />,
     ],
   },
 ];

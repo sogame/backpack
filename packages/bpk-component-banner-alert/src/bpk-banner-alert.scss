@@ -40,6 +40,36 @@
     @include bpk-border-sm($bpk-banner-alert-neutral-color, '');
   }
 
+  &--enter {
+    transition: opacity $bpk-duration-base ease-in-out;
+    opacity: 0.01;
+    transition-delay: $bpk-duration-base;
+  }
+
+  &--enter-active {
+    opacity: 1;
+  }
+
+  &--leave {
+    transition: opacity $bpk-duration-base ease-in-out;
+    opacity: 1;
+  }
+
+  &--leave-active {
+    transition: opacity $bpk-duration-base ease-in-out;
+    opacity: 0.01;
+  }
+
+  &--appear {
+    transition: opacity $bpk-duration-base ease-in-out;
+    opacity: 0.01;
+    transition-delay: $bpk-duration-base;
+  }
+
+  &--appear-active {
+    opacity: 1;
+  }
+
   &__header {
     display: flex;
     padding: $bpk-banner-alert-header-padding-y $bpk-banner-alert-header-padding-x;

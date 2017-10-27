@@ -22,9 +22,11 @@ import { withButtonAlignment } from 'bpk-component-icon';
 import BpkAnimateHeight from 'bpk-animate-height';
 import TickCircleIcon from 'bpk-component-icon/sm/tick-circle';
 import ChevronDownIcon from 'bpk-component-icon/sm/chevron-down';
+import CloseIconSm from 'bpk-component-icon/sm/close';
 import InfoCircleIcon from 'bpk-component-icon/sm/information-circle';
 import { durationSm } from 'bpk-tokens/tokens/base.es6';
 import { cssModules } from 'bpk-react-utils';
+import AnimateAndFade from './AnimateAndFade';
 
 import STYLES from './bpk-banner-alert.scss';
 
@@ -35,6 +37,7 @@ const WarnIcon = withButtonAlignment(InfoCircleIcon);
 const ErrorIcon = withButtonAlignment(InfoCircleIcon);
 const SuccessIcon = withButtonAlignment(TickCircleIcon);
 const ExpandIcon = withButtonAlignment(ChevronDownIcon);
+const CloseIcon = withButtonAlignment(CloseIconSm);
 
 export const ALERT_TYPES = {
   SUCCESS: 'success',
@@ -60,7 +63,7 @@ const getIconForType = (type) => {
   return map[type];
 };
 
-const ToggleButton = (props) => {
+const ExpandToggleButton = (props) => {
   const classNames = [getClassName('bpk-banner-alert__expand-icon')];
 
   if (props.expanded) { classNames.push(getClassName('bpk-banner-alert__expand-icon--flipped')); }
@@ -79,9 +82,32 @@ const ToggleButton = (props) => {
   );
 };
 
-ToggleButton.propTypes = {
+ExpandToggleButton.propTypes = {
   label: PropTypes.string.isRequired,
   expanded: PropTypes.bool.isRequired,
+};
+
+const DismissButton = (props) => {
+  const classNames = [getClassName('bpk-banner-alert__expand-icon')];
+  const { label, ...rest } = props;
+
+  return (
+    // TODO change `alert__toggle` to `action__toggle
+    <button
+      className={getClassName('bpk-banner-alert__toggle-button')}
+      aria-label={label}
+      title={label}
+      {...rest}
+    >
+      <CloseIcon
+        className={classNames.join(' ')}
+      />
+    </button>
+  );
+};
+
+DismissButton.propTypes = {
+  label: PropTypes.string.isRequired,
 };
 
 class BpkBannerAlert extends Component {
@@ -90,9 +116,15 @@ class BpkBannerAlert extends Component {
 
     this.state = {
       expanded: false,
+      shown: !this.props.fadeIn,
     };
 
     this.onExpand = this.onExpand.bind(this);
+    this.onDismiss = this.onDismiss.bind(this);
+  }
+
+  componentDidMount() {
+    this.onShown();
   }
 
   onExpand() {
@@ -101,17 +133,30 @@ class BpkBannerAlert extends Component {
     }));
   }
 
+  onShown() {
+    this.setState({
+      shown: true,
+    });
+  }
+
+  onDismiss() {
+    this.setState({
+      shown: false,
+    });
+  }
+
   render() {
     const {
-      children, className, type, ariaLive, message, toggleButtonLabel, ...rest
+      children, className, type, ariaLive, message, fadeIn, dismissable, dismissButtonLabel, toggleButtonLabel, ...rest
     } = this.props;
-    const isExpanded = this.state.expanded;
+    const { expanded, shown } = this.state;
     const isExpandable = children;
-    const showChildren = isExpandable && isExpanded;
+    const hasAction = isExpandable || dismissable;
+    const showChildren = isExpandable && expanded;
     const ariaRoles = ['alert'];
 
     const headerClassNames = [getClassName('bpk-banner-alert__header')];
-    const sectionClassNames = ['bpk-banner-alert', `bpk-banner-alert--${type}`]
+    const sectionClassNames = ['bpk-banner-alert', 'bpk-banner-alert--shown', `bpk-banner-alert--${type}`]
       .map(sectionClassName => getClassName(sectionClassName));
 
     if (className) { sectionClassNames.push(className); }
@@ -126,8 +171,8 @@ class BpkBannerAlert extends Component {
     jsx-a11y/no-noninteractive-element-interactions
     */
     // Disabling 'click-events-have-key-events and interactive-supports-focus' because header element is not focusable.
-    // ToggleButton is focusable and works for this.
-    return (
+    // ExpandToggleButton is focusable and works for this.
+    const bannerAlert = (
       <section className={sectionClassNames.join(' ')} {...rest}>
         <header
           role={ariaRoles.join(' ')}
@@ -139,9 +184,10 @@ class BpkBannerAlert extends Component {
           &nbsp;
           <span className={getClassName('bpk-banner-alert__message')}>{message}</span>
           &nbsp;
-          {isExpandable ? (
+          {hasAction ? (
             <span className={getClassName('bpk-banner-alert__toggle')}>
-              <ToggleButton expanded={isExpanded} label={toggleButtonLabel} />
+              {isExpandable && <ExpandToggleButton expanded={expanded} label={toggleButtonLabel} /> }
+              {dismissable && <DismissButton onClick={this.onDismiss} label={dismissButtonLabel} /> }
             </span>
           ) : null}
         </header>
@@ -149,6 +195,12 @@ class BpkBannerAlert extends Component {
           <div className={getClassName('bpk-banner-alert__children-container')}>{children}</div>
         </BpkAnimateHeight>
       </section>
+    );
+
+    return (
+      <AnimateAndFade onEnter={fadeIn} onLeave={dismissable} show={shown}>
+        {bannerAlert}
+      </AnimateAndFade>
     );
     /* eslint-enable */
   }
@@ -168,15 +220,21 @@ BpkBannerAlert.propTypes = {
     ARIA_LIVE.POLITE,
   ]),
   children: PropTypes.node,
-  toggleButtonLabel: PropTypes.string,
   className: PropTypes.string,
+  dismissable: PropTypes.bool,
+  dismissButtonLabel: PropTypes.string,
+  fadeIn: PropTypes.bool,
+  toggleButtonLabel: PropTypes.string,
 };
 
 BpkBannerAlert.defaultProps = {
   ariaLive: ARIA_LIVE.ASSERTIVE,
   children: null,
-  toggleButtonLabel: null,
   className: null,
+  dismissable: false,
+  dismissButtonLabel: null,
+  fadeIn: false,
+  toggleButtonLabel: null,
 };
 
 export default BpkBannerAlert;

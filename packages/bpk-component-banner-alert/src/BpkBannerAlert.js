@@ -119,7 +119,7 @@ class BpkBannerAlert extends Component {
       shown: !this.props.fadeIn,
     };
 
-    this.onExpand = this.onExpand.bind(this);
+    this.onToggleExpand = this.onToggleExpand.bind(this);
     this.onDismiss = this.onDismiss.bind(this);
   }
 
@@ -127,10 +127,13 @@ class BpkBannerAlert extends Component {
     this.onShown();
   }
 
-  onExpand() {
+  onToggleExpand() {
     this.setState(state => ({
       expanded: !state.expanded,
     }));
+    if (this.props.onAction !== null) {
+      this.props.onAction();
+    }
   }
 
   onShown() {
@@ -143,11 +146,24 @@ class BpkBannerAlert extends Component {
     this.setState({
       shown: false,
     });
+    if (this.props.onAction !== null) {
+      this.props.onAction();
+    }
   }
 
   render() {
     const {
-      children, className, type, ariaLive, message, fadeIn, dismissable, dismissButtonLabel, toggleButtonLabel, ...rest
+      children,
+      className,
+      onAction,
+      type,
+      ariaLive,
+      message,
+      fadeIn,
+      dismissable,
+      dismissButtonLabel,
+      toggleButtonLabel,
+      ...rest
     } = this.props;
     const { expanded, shown } = this.state;
     const isExpandable = children;
@@ -178,7 +194,7 @@ class BpkBannerAlert extends Component {
           role={ariaRoles.join(' ')}
           aria-live={ariaLive}
           className={headerClassNames.join(' ')}
-          onClick={this.onExpand}
+          onClick={this.onToggleExpand}
         >
           <span className={getClassName('bpk-banner-alert__icon')}>{getIconForType(type)}</span>
           &nbsp;
@@ -224,6 +240,7 @@ BpkBannerAlert.propTypes = {
   dismissable: PropTypes.bool,
   dismissButtonLabel: PropTypes.string,
   fadeIn: PropTypes.bool,
+  onAction: PropTypes.func,
   toggleButtonLabel: PropTypes.string,
 };
 
@@ -234,6 +251,7 @@ BpkBannerAlert.defaultProps = {
   dismissable: false,
   dismissButtonLabel: null,
   fadeIn: false,
+  onAction: null,
   toggleButtonLabel: null,
 };
 

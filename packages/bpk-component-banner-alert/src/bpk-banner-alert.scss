@@ -42,7 +42,7 @@
 
   &--enter {
     transition: opacity $bpk-duration-base ease-in-out;
-    opacity: 0.01;
+    opacity: .01;
     transition-delay: $bpk-duration-base;
   }
 
@@ -57,12 +57,12 @@
 
   &--leave-active {
     transition: opacity $bpk-duration-base ease-in-out;
-    opacity: 0.01;
+    opacity: .01;
   }
 
   &--appear {
     transition: opacity $bpk-duration-base ease-in-out;
-    opacity: 0.01;
+    opacity: .01;
     transition-delay: $bpk-duration-base;
   }
 

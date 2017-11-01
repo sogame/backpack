@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
     borderWidth: borderSizeSm,
     borderRadius: borderRadiusSm,
     overflow: 'hidden',
+    height: 'auto',
   },
   bannerContainer: {
     flexGrow: 1,
@@ -164,7 +165,7 @@ class BpkBannerAlert extends Component {
     super(props);
 
     this.state = {
-      expanded: false,
+      expanded: true,
       dismissed: false,
     };
 
@@ -192,7 +193,7 @@ class BpkBannerAlert extends Component {
     } = this.props;
 
     const expandable = children !== null;
-    const shown = !this.state.dismissed;
+    const show = !this.state.dismissed;
 
     let iconSource = null;
     let buttonIconSource = null;
@@ -315,7 +316,7 @@ class BpkBannerAlert extends Component {
     );
 
     return (
-      <AnimateAndFade onEnter={fadeIn} onLeave show={shown}>
+      <AnimateAndFade onEnter={fadeIn} onLeave show={show}>
         {bannerAlert}
       </AnimateAndFade>
     );

@@ -63,7 +63,6 @@ class BpkAnimateHeight extends React.Component {
     const { height } = event.nativeEvent.layout;
     this.setState({
       // if the component has started expanded, we should now set the height of the container
-      // why on earth does a value of 1 instead of 0 make this break!
       height: new Animated.Value(expandedImmediately ? height : 0),
       expanded: expandedImmediately,
       heightSet: true,

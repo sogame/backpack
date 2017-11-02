@@ -7,6 +7,10 @@
   - New component `BpkSlider`. See http://backpack.prod.aws.skyscnr.com/components/web/sliders
   - **NOTE:** Don't release until we have fixed RTL support
 
+**Fixed:**
+- react-native-bpk-component-banner-alert:
+  - Fix icon color of success alert.
+
 ## 2017-11-02 - Popover fix for target element refocus
 
 **Fixed:**

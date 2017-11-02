@@ -180,7 +180,7 @@ const BpkBannerAlert = (props) => {
   if (type === ALERT_TYPES.SUCCESS) {
     iconSource = 'tick-circle';
     outerStyleFinal.push(styles.outerContainerSuccess);
-    iconStyle = styles.iconWarn;
+    iconStyle = styles.iconSuccess;
   } else if (type === ALERT_TYPES.WARN) {
     iconSource = 'information-circle';
     outerStyleFinal.push(styles.outerContainerWarn);

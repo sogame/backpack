@@ -6,6 +6,8 @@
 - bpk-component-slider:
   - New component `BpkSlider`. See http://backpack.prod.aws.skyscnr.com/components/web/sliders
   - **NOTE:** Don't release until we have fixed RTL support
+- bpk-banner-alert:
+  - New `hideAfter` prop to automatically hide the alert after a number of seconds.
 
 **Fixed:**
 - bpk-component-calendar:

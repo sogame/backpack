@@ -19,10 +19,16 @@
 @import '~bpk-mixins/index';
 
 .bpk-banner-alert {
+  transition: opacity $bpk-duration-base ease-in-out;
   background-color: $bpk-banner-alert-background-color;
+  opacity: 1;
   overflow: hidden;
 
   @include bpk-border-radius-sm;
+
+  &--hidden {
+    opacity: 0;
+  }
 
   &--success {
     @include bpk-border-sm($bpk-banner-alert-success-color, '');

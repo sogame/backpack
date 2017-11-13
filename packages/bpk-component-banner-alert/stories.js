@@ -52,6 +52,9 @@ storiesOf('bpk-component-banner-alert', module)
       {longMessage}
     </BpkBannerAlert>
   ))
+  .add('Success with auto-hide', () => (
+    <BpkBannerAlert message={message} type={ALERT_TYPES.SUCCESS} hideAfter={3} />
+  ))
   .add('Warn', () => (
     <BpkBannerAlert message={message} type={ALERT_TYPES.WARN} />
   ))

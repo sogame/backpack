@@ -90,9 +90,27 @@ class BpkBannerAlert extends Component {
 
     this.state = {
       expanded: false,
+      hidden: false,
     };
 
     this.onExpand = this.onExpand.bind(this);
+  }
+
+  componentWillMount() {
+    const { hideAfter } = this.props;
+    if (hideAfter) {
+      this.hideIntervalId = setTimeout(() => {
+        this.setState({
+          hidden: true,
+        });
+      }, hideAfter * 1000);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.hideIntervalId) {
+      clearTimeout(this.hideIntervalId);
+    }
   }
 
   onExpand() {
@@ -113,6 +131,9 @@ class BpkBannerAlert extends Component {
     const headerClassNames = [getClassName('bpk-banner-alert__header')];
     const sectionClassNames = ['bpk-banner-alert', `bpk-banner-alert--${type}`]
       .map(sectionClassName => getClassName(sectionClassName));
+    if (this.state.hidden) {
+      sectionClassNames.push(getClassName('bpk-banner-alert--hidden'));
+    }
 
     if (className) { sectionClassNames.push(className); }
     if (isExpandable) {
@@ -170,6 +191,7 @@ BpkBannerAlert.propTypes = {
   children: PropTypes.node,
   toggleButtonLabel: PropTypes.string,
   className: PropTypes.string,
+  hideAfter: PropTypes.number,
 };
 
 BpkBannerAlert.defaultProps = {
@@ -177,6 +199,7 @@ BpkBannerAlert.defaultProps = {
   children: null,
   toggleButtonLabel: null,
   className: null,
+  hideAfter: null,
 };
 
 export default BpkBannerAlert;

@@ -75,4 +75,18 @@ describe('BpkBannerAlert', () => {
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('should render correctly and hide after some seconds', () => {
+    jest.useFakeTimers();
+
+    const tree = renderer.create(
+      <BpkBannerAlert type={ALERT_TYPES.SUCCESS} message={message} hideAfter={3} />,
+    );
+
+    expect(tree.toJSON()).toMatchSnapshot();
+
+    jest.runAllTimers();
+
+    expect(tree.toJSON()).toMatchSnapshot();
+  });
 });

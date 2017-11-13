@@ -1,8 +1,157 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`BpkBannerAlert should render correctly and hide after some seconds 1`] = `
+<section
+  className="bpk-banner-alert bpk-banner-alert--success"
+  hideAfter={3}
+>
+  <header
+    aria-live="assertive"
+    className="bpk-banner-alert__header"
+    onClick={[Function]}
+    role="alert"
+  >
+    <span
+      className="bpk-banner-alert__icon"
+    >
+      <span
+        style={
+          Object {
+            "display": "inline-block",
+            "lineHeight": "1.125rem",
+            "marginTop": "0.1875rem",
+            "verticalAlign": "top",
+          }
+        }
+      >
+        <svg
+          className="bpk-banner-alert__success-icon"
+          height="18"
+          style={
+            Object {
+              "height": "1.125rem",
+              "width": "1.125rem",
+            }
+          }
+          viewBox="0 0 24 24"
+          width="18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm5.9 7l-6.5 7.4c-.4.5-1.2.6-1.7.1l-3.5-3.1c-.3-.2-.3-.6-.1-.8l.8-.9c.2-.3.6-.3.8-.1l2.4 2.1c.1.1.3.1.3 0L16 7.4c.2-.2.6-.3.8-.1l.9.8c.3.3.4.6.2.9z"
+          />
+        </svg>
+      </span>
+    </span>
+     
+    <span
+      className="bpk-banner-alert__message"
+    >
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+    </span>
+     
+  </header>
+  <div
+    onTransitionEnd={[Function]}
+    style={
+      Object {
+        "MozTransition": "height 200ms ease ",
+        "OTransition": "height 200ms ease ",
+        "WebkitTransition": "height 200ms ease ",
+        "height": 0,
+        "msTransition": "height 200ms ease ",
+        "overflow": "hidden",
+        "transition": "height 200ms ease ",
+      }
+    }
+  >
+    <div>
+      <div
+        className="bpk-banner-alert__children-container"
+      />
+    </div>
+  </div>
+</section>
+`;
+
+exports[`BpkBannerAlert should render correctly and hide after some seconds 2`] = `
+<section
+  className="bpk-banner-alert bpk-banner-alert--success bpk-banner-alert--hidden"
+  hideAfter={3}
+>
+  <header
+    aria-live="assertive"
+    className="bpk-banner-alert__header"
+    onClick={[Function]}
+    role="alert"
+  >
+    <span
+      className="bpk-banner-alert__icon"
+    >
+      <span
+        style={
+          Object {
+            "display": "inline-block",
+            "lineHeight": "1.125rem",
+            "marginTop": "0.1875rem",
+            "verticalAlign": "top",
+          }
+        }
+      >
+        <svg
+          className="bpk-banner-alert__success-icon"
+          height="18"
+          style={
+            Object {
+              "height": "1.125rem",
+              "width": "1.125rem",
+            }
+          }
+          viewBox="0 0 24 24"
+          width="18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm5.9 7l-6.5 7.4c-.4.5-1.2.6-1.7.1l-3.5-3.1c-.3-.2-.3-.6-.1-.8l.8-.9c.2-.3.6-.3.8-.1l2.4 2.1c.1.1.3.1.3 0L16 7.4c.2-.2.6-.3.8-.1l.9.8c.3.3.4.6.2.9z"
+          />
+        </svg>
+      </span>
+    </span>
+     
+    <span
+      className="bpk-banner-alert__message"
+    >
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+    </span>
+     
+  </header>
+  <div
+    onTransitionEnd={[Function]}
+    style={
+      Object {
+        "MozTransition": "height 200ms ease ",
+        "OTransition": "height 200ms ease ",
+        "WebkitTransition": "height 200ms ease ",
+        "height": 0,
+        "msTransition": "height 200ms ease ",
+        "overflow": "hidden",
+        "transition": "height 200ms ease ",
+      }
+    }
+  >
+    <div>
+      <div
+        className="bpk-banner-alert__children-container"
+      />
+    </div>
+  </div>
+</section>
+`;
+
 exports[`BpkBannerAlert should render correctly with "type" attribute equal to "error" 1`] = `
 <section
   className="bpk-banner-alert bpk-banner-alert--error"
+  hideAfter={null}
 >
   <header
     aria-live="assertive"
@@ -76,6 +225,7 @@ exports[`BpkBannerAlert should render correctly with "type" attribute equal to "
 exports[`BpkBannerAlert should render correctly with "type" attribute equal to "success" 1`] = `
 <section
   className="bpk-banner-alert bpk-banner-alert--success"
+  hideAfter={null}
 >
   <header
     aria-live="assertive"
@@ -149,6 +299,7 @@ exports[`BpkBannerAlert should render correctly with "type" attribute equal to "
 exports[`BpkBannerAlert should render correctly with "type" attribute equal to "warn" 1`] = `
 <section
   className="bpk-banner-alert bpk-banner-alert--warn"
+  hideAfter={null}
 >
   <header
     aria-live="assertive"
@@ -222,6 +373,7 @@ exports[`BpkBannerAlert should render correctly with "type" attribute equal to "
 exports[`BpkBannerAlert should render correctly with a custom class name 1`] = `
 <section
   className="bpk-banner-alert bpk-banner-alert--warn custom-class"
+  hideAfter={null}
 >
   <header
     aria-live="assertive"
@@ -295,6 +447,7 @@ exports[`BpkBannerAlert should render correctly with a custom class name 1`] = `
 exports[`BpkBannerAlert should render correctly with a element based message 1`] = `
 <section
   className="bpk-banner-alert bpk-banner-alert--success"
+  hideAfter={null}
 >
   <header
     aria-live="assertive"
@@ -415,6 +568,7 @@ exports[`BpkBannerAlert should render correctly with arbitrary props 1`] = `
 <section
   className="bpk-banner-alert bpk-banner-alert--warn"
   hidden="hidden"
+  hideAfter={null}
   id="custom-id"
 >
   <header
@@ -489,6 +643,7 @@ exports[`BpkBannerAlert should render correctly with arbitrary props 1`] = `
 exports[`BpkBannerAlert should render correctly with child nodes 1`] = `
 <section
   className="bpk-banner-alert bpk-banner-alert--success"
+  hideAfter={null}
 >
   <header
     aria-live="assertive"

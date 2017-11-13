@@ -36,3 +36,4 @@ export default () => (
 | children          | node                 | false    | null          |
 | toggleButtonLabel | string               | false    | null          |
 | className         | string               | no       | null          |
+| hideAfter         | number               | no       | null          |

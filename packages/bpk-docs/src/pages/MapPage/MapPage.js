@@ -87,7 +87,7 @@ const components = [
               longitude: 139.704051,
             }}
             onClick={() => {
-              alert('Beep beep!');
+              alert('Beep beep!'); // eslint-disable-line no-alert
             }}
           />
           <BpkMapMarker
@@ -98,7 +98,7 @@ const components = [
               longitude: 139.705051,
             }}
             onClick={() => {
-              alert('Interesting!');
+              alert('Interesting!'); // eslint-disable-line no-alert
             }}
           />
           <BpkMapMarker
@@ -109,7 +109,7 @@ const components = [
               longitude: 139.705051,
             }}
             onClick={() => {
-              alert('Yum!');
+              alert('Yum!'); // eslint-disable-line no-alert
             }}
           />
         </BpkMapWithScript>

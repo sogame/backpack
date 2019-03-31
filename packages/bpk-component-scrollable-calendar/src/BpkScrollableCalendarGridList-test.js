@@ -37,6 +37,7 @@ describe('BpkCalendarScrollGridList', () => {
       <BpkScrollableCalendarGridList
         minDate={DateUtils.addDays(testDate, -1)}
         maxDate={DateUtils.addMonths(testDate, 12)}
+        month={testDate}
         formatMonth={formatMonth}
         formatDateFull={formatDateFull}
         DateComponent={BpkCalendarScrollDate}
@@ -52,6 +53,7 @@ describe('BpkCalendarScrollGridList', () => {
       <BpkScrollableCalendarGridList
         minDate={DateUtils.addDays(testDate, -1)}
         maxDate={DateUtils.addMonths(testDate, 12)}
+        month={testDate}
         formatMonth={formatMonth}
         formatDateFull={formatDateFull}
         DateComponent={BpkCalendarScrollDate}
@@ -69,6 +71,7 @@ describe('BpkCalendarScrollGridList', () => {
       <BpkScrollableCalendarGridList
         minDate={DateUtils.addDays(testDate, -1)}
         maxDate={DateUtils.addMonths(testDate, 12)}
+        month={testDate}
         formatMonth={formatMonth}
         formatDateFull={formatDateFull}
         DateComponent={BpkCalendarScrollDate}
@@ -89,6 +92,7 @@ describe('BpkCalendarScrollGridList', () => {
       <BpkScrollableCalendarGridList
         minDate={DateUtils.addDays(testDate, -1)}
         maxDate={DateUtils.addMonths(testDate, 12)}
+        month={testDate}
         formatMonth={formatMonth}
         formatDateFull={formatDateFull}
         DateComponent={BpkCalendarScrollDate}
@@ -123,6 +127,7 @@ describe('BpkCalendarScrollGridList', () => {
       <BpkScrollableCalendarGridList
         minDate={DateUtils.addDays(testDate, -1)}
         maxDate={DateUtils.addMonths(testDate, 12)}
+        month={testDate}
         formatMonth={formatMonth}
         formatDateFull={formatDateFull}
         DateComponent={MyCustomDate}

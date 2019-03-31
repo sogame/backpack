@@ -22,35 +22,37 @@
 
 import fs from 'fs';
 
-import { includes } from 'lodash';
-import { danger, fail, warn, message } from 'danger';
+import { fail, warn } from 'danger';
+import {
+  createdFiles,
+  committedFiles,
+  prTitle,
+  prAuthor,
+  committedFilesGrep,
+  inCommitGrep,
+  inCommit,
+  commonContribution,
+  jsTestShortcuts,
+  commonFileWarnings,
+} from 'danger-plugin-toolbox';
 
-import * as meta from './meta.json';
+const prAuthorIsBot = ['greenkeeper[bot]'].includes(prAuthor);
 
 const AVOID_EXACT_WORDS = [
   { word: 'react native', reason: 'Please use React Native with capitals' },
 ];
 
-const BACKPACK_SQUAD_MEMBERS = meta.maintainers.map(
-  maintainer => maintainer.github,
-);
-const author = danger.github.pr.user.login;
-const isPrExternal = !BACKPACK_SQUAD_MEMBERS.includes(author);
-
-const createdFiles = danger.git.created_files;
-const modifiedFiles = danger.git.modified_files;
-const fileChanges = [...modifiedFiles, ...createdFiles];
-const declaredTrivial = danger.github.pr.title.includes('#trivial');
-const markdown = fileChanges.filter(path => path.endsWith('md'));
+const declaredTrivial = prTitle.includes('#trivial');
+const markdown = committedFilesGrep(/\.md$/i);
 
 // Be nice to our neighbours.
-if (isPrExternal) {
-  message('Thanks for the PR 🎉.');
+if (!prAuthorIsBot) {
+  commonContribution({ msg: 'Thanks for the PR 🎉.' });
 }
 
 // Ensure new components are extensible by consumers.
-const componentIntroduced = createdFiles.some(filePath =>
-  filePath.match(/packages\/bpk-component.+\/src\/.+\.js/),
+const componentIntroduced = inCommitGrep(
+  /packages\/bpk-component.+\/src\/.+\.js/,
 );
 
 if (componentIntroduced) {
@@ -60,40 +62,42 @@ if (componentIntroduced) {
 }
 
 // If any of the packages have changed, the UNRELEASED log should have been updated.
-const unreleasedModified = includes(modifiedFiles, 'UNRELEASED.md');
-const packagesModified = fileChanges.some(
-  filePath =>
-    filePath.startsWith('packages/') &&
-    !filePath.startsWith('packages/bpk-docs/'),
-);
-if (packagesModified && !unreleasedModified && !declaredTrivial) {
-  warn(
-    "One or more packages have changed, but `UNRELEASED.md` wasn't updated.",
+if (!prAuthorIsBot) {
+  const unreleasedModified = inCommit('UNRELEASED.md');
+  const packagesModified = committedFiles.some(
+    filePath =>
+      filePath.startsWith('packages/') &&
+      !filePath.startsWith('packages/bpk-docs/'),
   );
+  if (packagesModified && !unreleasedModified && !declaredTrivial) {
+    warn(
+      "One or more packages have changed, but `UNRELEASED.md` wasn't updated.",
+    );
+  }
 }
 
 // If source files have changed, the snapshots should have been updated.
-const componentSourceFilesModified = fileChanges.some(
+const componentSourceFilesModified = committedFiles.some(
   filePath =>
     // packages/(one or more chars)/src/(one or more chars).js
     filePath.match(/packages\/.*bpk-component.+\/src\/.+\.js/) &&
     !filePath.includes('-test.'),
 );
 
-const snapshotsModified = fileChanges.some(filePath =>
-  filePath.endsWith('.js.snap'),
-);
+const snapshotsModified = committedFilesGrep(/\.js\.snap$/);
 
 if (componentSourceFilesModified && !snapshotsModified) {
   warn(
     "Package source files (e.g. `packages/package-name/src/Component.js`) were updated, but snapshots weren't. Have you checked that the tests still pass?",
-  ); // eslint-disable-line max-len
+  );
 }
 
 // Ensure package-lock changes are intentional.
-const lockFileUpdated = includes(modifiedFiles, 'package-lock.json');
-if (lockFileUpdated) {
-  warn('`package-lock.json` was updated. Ensure that this was intentional.');
+if (!prAuthorIsBot) {
+  const lockFileUpdated = inCommit('package-lock.json');
+  if (lockFileUpdated) {
+    warn('`package-lock.json` was updated. Ensure that this was intentional.');
+  }
 }
 
 // New files should include the Backpack license heading.
@@ -133,3 +137,7 @@ markdown.forEach(path => {
       });
     });
 });
+
+jsTestShortcuts({ logTypeFocused: 'fail' });
+
+commonFileWarnings('test.log');
